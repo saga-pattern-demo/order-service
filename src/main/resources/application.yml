@@ -1,0 +1,29 @@
+server:
+  port: 8091
+---
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/orderdb
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+---
+topic:
+  name:
+    order:
+      created: "order-created"
+      updated: "order-updated"
+---
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      order-group-id: "order"
