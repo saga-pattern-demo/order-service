@@ -27,3 +27,4 @@ spring:
     bootstrap-servers: localhost:9092
     consumer:
       order-group-id: "order"
+      auto-offset-reset: earliest
